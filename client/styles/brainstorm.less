@@ -1,0 +1,282 @@
+/* ==========================================================================
+   Custom styling for Brainstormer™
+   ========================================================================== */
+
+#brainstorm {
+  float: none;
+  overflow: hidden;
+  margin: 2em auto 5em;
+}
+
+/* 
+   App Frame
+   ========================================================================== */
+
+// Wrapper
+.app-wrapper {
+  > header {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: .5em;
+    h4 {
+      margin: 0;
+      span {
+        font-size: .7em;
+      }
+    }
+  }
+  > .idea-header {
+    padding: 1em;
+    border-radius: 3px 3px 0 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    p {
+      margin: 0 .5em;
+      font-size: .9em;
+      color: lighten(#1F6C8A, 10%);
+      color: fadeout(#1F6C8A, 40%);
+      strong {
+        color: fadeout(#1F6C8A, 20%);
+      }
+    }
+    > input[type="text"] {
+      width: 100%;
+      margin: 0;
+      padding: .25em;
+      border: 0;
+      border-bottom: 1px dashed #ccc;
+      font-size: 1.5em;
+      color: #1F6C8A;
+      &:focus {
+        outline: 0;
+        border-bottom: 1px solid #ccc;
+        color: darken(#1F6C8A, 10%);
+      }
+    }
+  }
+}
+
+// Body
+.app-body {
+  .pagination {
+    width: 100%;
+    text-align: center;
+    li {
+      display: inline-block;
+      margin-right: -4px;
+    }
+  }
+}
+
+
+/* 
+   Index of Topics
+   ========================================================================== */
+
+.topic-list {
+  max-height: 500px;
+  padding: 1em;
+  list-style: none;
+  li {
+    padding: 1em 0;
+    border-bottom: 1px dotted #ddd;
+    h4 {
+      margin: 0;
+    }
+    .badge {
+      position: relative;
+      top: -2px;
+      margin-left: .5em;
+    }
+  }
+}
+
+/* 
+   Idea List
+   ========================================================================== */
+
+
+.ideas {
+  // Turn on to truncate
+  max-height: 620px;
+  overflow-y: scroll;
+  padding: 1em;
+  background-color: #ddd;
+  border: 1px solid #ccc;
+  border-top: 0;
+}
+
+  // Single Idea
+  .idea {
+    margin-bottom: .85em;
+    overflow: hidden;
+    border-color: #ccc;
+    .idea-title {
+      margin-top: 0;
+    }
+    .panel-body {
+      padding: .75em;
+    }
+    .voter {
+      padding-left: 1em;
+      text-align: center;
+    }
+    small {
+      display: block;
+      //Offset last <p> margin bottom
+      margin-top: -.25em;
+    }
+    footer {
+      padding: .5em .5em .5em 11%;
+      background-color: lighten(#ddd, 4%);
+      button {
+        color: #888;
+      }
+    }
+  }
+
+    // Voter List Footer
+    .voters {
+      > div {
+        display: block;
+        float: left;
+        margin-right: 1em;
+        > span {
+          float: left;
+          margin-right: .25em;
+          font-size: .9em;
+        }
+        &.upvoters {
+          span {
+            color: green;
+          }
+        }
+        &.downvoters {
+          span {
+            color: #D32D2D;
+          }
+        }
+      }
+      ul {
+        float: left;
+        max-width: 120px;
+        margin: 0 .5em 0 0;
+        padding: 0;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+      li {
+        display: inline-block;
+      }
+    }
+  
+  //Voting Button Colors
+  .upvote {
+    color: #ADD1AD;
+    &:hover {
+      color: green;
+    }
+  }
+
+  .downvote {
+    padding-left: 3px;
+    color: #D6A0A0;
+    &:hover {
+      color: #D32D2D;
+    }
+  }
+
+  //Upvote Active
+  .idea-upvoted {
+    .upvote {
+      background: green;
+      border-color: green;
+      color: #C2FFC2;
+    }
+    .downvote {
+      border-top-color: green;
+    }
+    .voter h5 {
+      color: #09A709;
+    }
+  }
+
+  //Downvote Active
+  .idea-downvoted {
+    .upvote {
+      border-bottom-color: #D32D2D;
+    }
+    .downvote {
+      background: #D32D2D;
+      border-color: #D32D2D;
+      color: pink;
+    }
+    .voter h5 {
+      color: #D32D2D;
+    }
+  }
+
+/* 
+   Response Form
+   ========================================================================== */
+
+.add-idea {
+  margin-top: 1em;
+  .idea-title {
+    margin-bottom: 0;
+  }
+  .idea-message {
+    display: none;
+    margin-bottom: .5em;
+    textarea {
+      margin-bottom: .5em;
+      border-radius: 0 0 3px 3px;
+      border-top: 0;
+      resize: none;
+    }
+  }
+  &.active {
+    .idea-title {
+      input {
+        border-radius: 3px 3px 0 0;
+        border-bottom: 0;
+      }
+    }
+    .idea-message {
+      display: block;
+    }
+  }
+}
+
+/* 
+   User List
+   ========================================================================== */
+
+.user-presence {
+  padding-left: 0;
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    > li {
+      margin-bottom: 1em;
+      &:last-child { margin-bottom: 0; }
+      .avatar {
+        display: inline-block;
+        margin-right: .25em;
+      }
+    }
+  }
+}
+
+.avatar {
+  display: block;
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  border-radius: 3px;
+  &.avatar-xs {
+    width: 20px;
+    height: 20px;
+    border-radius: 2px;
+  }
+}

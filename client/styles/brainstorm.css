@@ -1,0 +1,267 @@
+/* ==========================================================================
+   Custom styling for Brainstormer™
+   ========================================================================== */
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: " ";
+}
+.clearfix:after {
+  clear: both;
+}
+#brainstorm {
+  float: none;
+  overflow: hidden;
+  margin: 2em auto 5em;
+}
+/*
+   App Frame
+   ========================================================================== */
+.app-wrapper > header {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: .5em;
+}
+.app-wrapper > header h4 {
+  margin: 0;
+}
+.app-wrapper > header h4 span {
+  font-size: .7em;
+}
+.app-wrapper > .idea-header {
+  padding: 1em;
+  border-radius: 3px 3px 0 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+}
+.app-wrapper > .idea-header p {
+  margin: 0 .5em;
+  font-size: .9em;
+  color: #288db4;
+  color: rgba(31, 108, 138, 0.6);
+}
+.app-wrapper > .idea-header p strong {
+  color: rgba(31, 108, 138, 0.8);
+}
+.app-wrapper > .idea-header > input[type="text"] {
+  width: 100%;
+  margin: 0;
+  padding: .25em;
+  border: 0;
+  border-bottom: 1px dashed #ccc;
+  font-size: 1.5em;
+  color: #1F6C8A;
+}
+.app-wrapper > .idea-header > input[type="text"]:focus {
+  outline: 0;
+  border-bottom: 1px solid #ccc;
+  color: #164b60;
+}
+.app-body .pagination {
+  width: 100%;
+  text-align: center;
+}
+.app-body .pagination li {
+  display: inline-block;
+  margin-right: -4px;
+}
+/*
+   Index of Topics
+   ========================================================================== */
+.topic-list {
+  max-height: 500px;
+  padding: 1em;
+  list-style: none;
+}
+.topic-list li {
+  padding: 1em 0;
+  border-bottom: 1px dotted #ddd;
+}
+.topic-list li h4 {
+  margin: 0;
+}
+.topic-list li .badge {
+  position: relative;
+  top: -2px;
+  margin-left: .5em;
+}
+/*
+   Idea List
+   ========================================================================== */
+.ideas {
+  max-height: 620px;
+  overflow-y: scroll;
+  padding: 1em;
+  background-color: #ddd;
+  border: 1px solid #ccc;
+  border-top: 0;
+}
+.idea {
+  margin-bottom: .85em;
+  overflow: hidden;
+  border-color: #ccc;
+}
+.idea .idea-title {
+  margin-top: 0;
+}
+.idea .panel-body {
+  padding: .75em;
+}
+.idea .voter {
+  padding-left: 1em;
+  text-align: center;
+}
+.idea small {
+  display: block;
+  margin-top: -0.25em;
+}
+.idea footer {
+  padding: .5em .5em .5em 11%;
+  background-color: #e7e7e7;
+}
+.idea footer button {
+  color: #888;
+}
+.voters > div {
+  display: block;
+  float: left;
+  margin-right: 1em;
+}
+.voters > div > span {
+  float: left;
+  margin-right: .25em;
+  font-size: .9em;
+}
+.voters > div.upvoters span {
+  color: green;
+}
+.voters > div.downvoters span {
+  color: #D32D2D;
+}
+.voters ul {
+  float: left;
+  max-width: 120px;
+  margin: 0 .5em 0 0;
+  padding: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.voters li {
+  display: inline-block;
+}
+.upvote {
+  color: #ADD1AD;
+}
+.upvote:hover {
+  color: green;
+}
+.downvote {
+  padding-left: 3px;
+  color: #D6A0A0;
+}
+.downvote:hover {
+  color: #D32D2D;
+}
+.idea-upvoted .upvote {
+  background: green;
+  border-color: green;
+  color: #C2FFC2;
+}
+.idea-upvoted .downvote {
+  border-top-color: green;
+}
+.idea-upvoted .voter h5 {
+  color: #09A709;
+}
+.idea-downvoted .upvote {
+  border-bottom-color: #D32D2D;
+}
+.idea-downvoted .downvote {
+  background: #D32D2D;
+  border-color: #D32D2D;
+  color: pink;
+}
+.idea-downvoted .voter h5 {
+  color: #D32D2D;
+}
+/*
+   Response Form
+   ========================================================================== */
+.add-idea {
+  margin-top: 1em;
+}
+.add-idea .idea-title {
+  margin-bottom: 0;
+}
+.add-idea .idea-message {
+  margin-bottom: .5em;
+}
+.add-idea .idea-message textarea {
+  margin-bottom: .5em;
+  border-radius: 0 0 3px 3px;
+  border-top: 0;
+  resize: none;
+}
+.add-idea.active .idea-title input {
+  border-radius: 3px 3px 0 0;
+  border-bottom: 0;
+}
+.add-idea.active .idea-message {
+  display: block;
+}
+/*
+   User List
+   ========================================================================== */
+.user-presence {
+  padding-left: 0;
+}
+.user-presence ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.user-presence ul > li {
+  width: 100%;
+  margin-bottom: 1em;
+}
+.user-presence ul > li:last-child {
+  margin-bottom: 0;
+}
+.gi-userlist.gi-override .gi-user:before,
+.gi-userlist.gi-override .gi-user:after {
+  display: table;
+  content: " ";
+}
+.gi-userlist.gi-override .gi-user:after {
+  clear: both;
+}
+.gi-userlist.gi-override .gi-color {
+  display: block;
+  float: left;
+  margin-right: .5em;
+  width: 27px;
+  height: 27px;
+  border-radius: 2px;
+}
+.gi-userlist.gi-override .gi-avatar-img {
+  max-width: 100%;
+  height: auto;
+}
+.gi-userlist.gi-override .gi-name {
+  display: block;
+  float: left;
+  line-height: 2;
+}
+.avatar,
+.gi-color {
+  display: block;
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  border-radius: 3px;
+}
+.avatar.avatar-xs,
+.gi-color.avatar-xs {
+  width: 20px;
+  height: 20px;
+  border-radius: 2px;
+}

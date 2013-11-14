@@ -1,0 +1,10 @@
+node_modules/
+app/client/bower_components
+app/client/config/config.js
+dist
+sauce_connect.log
+logs/*
+
+*.swp
+*.swo
+*.swn
