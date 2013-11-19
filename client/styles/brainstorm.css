@@ -115,6 +115,7 @@
   margin-top: -0.25em;
 }
 .idea footer {
+  display: none;
   padding: .5em .5em .5em 11%;
   background-color: #e7e7e7;
 }

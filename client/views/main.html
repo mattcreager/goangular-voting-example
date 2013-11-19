@@ -19,23 +19,18 @@
           <div class="{{ idea.status }} idea panel panel-default" ng-repeat="idea in ideas | orderIdeasBy:'votes'">
             <div class="panel-body">
               <div class="row">
-                <div class="voter pull-left">
+                <div class="voter pull-left col-sm-4">
                   <div class="btn-group-vertical">
                     <button type="button" class="btn btn-default btn-xs upvote" ng-click="idea.upVote()"><span class="glyphicon glyphicon-chevron-up"></span></button>
                     <button type="button" class="btn btn-default btn-xs downvote" ng-click="idea.downVote()"><span class="glyphicon glyphicon-chevron-down"></span></button>
                   </div>
                   <h5>{{ idea.votes }}</h5>
                 </div>
-                <div class="col-md-8">
-                  <h4 class="idea-title">{{ idea.get('title') }}</h4>
+                <div class="col-sm-8">
+                  <h4 class="idea-title">{{ idea.get('titl de') }}</h4>
                   <p>{{ idea.get('desc') }}</p>
                   <small class="text-muted">10 minutes ago</small>
-                </div>
-                <div class="col-md-2 pull-right">
-                  <div class="avatar">
-                    <img src="http://placehold.it/40/cccccc" alt="">
-                  </div>
-                </div>
+                </div> d
               </div>
             </div>
             <footer class="clearfix">

@@ -1,6 +1,6 @@
 node_modules/
-app/client/bower_components
-app/client/config/config.js
+client/bower_components
+client/config/config.js
 dist
 sauce_connect.log
 logs/*
