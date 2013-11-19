@@ -1,20 +1,12 @@
 /* ==========================================================================
    Custom styling for Brainstormer™
    ========================================================================== */
-.clearfix:before,
-.clearfix:after {
-  display: table;
-  content: " ";
-}
-.clearfix:after {
-  clear: both;
-}
 #brainstorm {
   float: none;
   overflow: hidden;
   margin: 2em auto 5em;
 }
-/*
+/* 
    App Frame
    ========================================================================== */
 .app-wrapper > header {
@@ -64,7 +56,7 @@
   display: inline-block;
   margin-right: -4px;
 }
-/*
+/* 
    Index of Topics
    ========================================================================== */
 .topic-list {
@@ -84,12 +76,10 @@
   top: -2px;
   margin-left: .5em;
 }
-/*
+/* 
    Idea List
    ========================================================================== */
 .ideas {
-  max-height: 620px;
-  overflow-y: scroll;
   padding: 1em;
   background-color: #ddd;
   border: 1px solid #ccc;
@@ -101,13 +91,13 @@
   border-color: #ccc;
 }
 .idea .idea-title {
-  margin-top: 0;
+  margin-top: .25em;
 }
 .idea .panel-body {
   padding: .75em;
 }
 .idea .voter {
-  padding-left: 1em;
+  padding: 0 1em;
   text-align: center;
 }
 .idea small {
@@ -184,7 +174,7 @@
 .idea-downvoted .voter h5 {
   color: #D32D2D;
 }
-/*
+/* 
    Response Form
    ========================================================================== */
 .add-idea {
@@ -194,6 +184,7 @@
   margin-bottom: 0;
 }
 .add-idea .idea-message {
+  display: none;
   margin-bottom: .5em;
 }
 .add-idea .idea-message textarea {
@@ -209,7 +200,7 @@
 .add-idea.active .idea-message {
   display: block;
 }
-/*
+/* 
    User List
    ========================================================================== */
 .user-presence {
@@ -221,48 +212,72 @@
   list-style: none;
 }
 .user-presence ul > li {
-  width: 100%;
   margin-bottom: 1em;
 }
 .user-presence ul > li:last-child {
   margin-bottom: 0;
 }
-.gi-userlist.gi-override .gi-user:before,
-.gi-userlist.gi-override .gi-user:after {
-  display: table;
-  content: " ";
+.user-presence ul > li .avatar {
+  display: inline-block;
+  margin-right: .25em;
 }
-.gi-userlist.gi-override .gi-user:after {
-  clear: both;
-}
-.gi-userlist.gi-override .gi-color {
-  display: block;
-  float: left;
-  margin-right: .5em;
-  width: 27px;
-  height: 27px;
-  border-radius: 2px;
-}
-.gi-userlist.gi-override .gi-avatar-img {
-  max-width: 100%;
-  height: auto;
-}
-.gi-userlist.gi-override .gi-name {
-  display: block;
-  float: left;
-  line-height: 2;
-}
-.avatar,
-.gi-color {
+.avatar {
   display: block;
   width: 40px;
   height: 40px;
   overflow: hidden;
   border-radius: 3px;
 }
-.avatar.avatar-xs,
-.gi-color.avatar-xs {
+.avatar.avatar-xs {
   width: 20px;
   height: 20px;
   border-radius: 2px;
+}
+@media (max-width: 768px) {
+  html {
+    height: 100%;
+  }
+  body {
+    position: relative;
+    height: 100%;
+    padding-top: 135px;
+    overflow: hidden;
+  }
+  body > .container {
+    width: auto;
+    height: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  #brainstorm {
+    margin-top: 0;
+    height: 100%;
+  }
+  #brainstorm > .row {
+    height: 100%;
+  }
+  .app-wrapper {
+    height: 100%;
+  }
+  .app-wrapper > .idea-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    padding: 1em;
+    border: 0;
+    box-shadow: 0 1px 6px rgba(34, 34, 34, 0.2);
+  }
+  .ideas {
+    position: relative;
+    height: 100%;
+    overflow-y: auto;
+    padding-top: 1em;
+    border: 0;
+    background-color: #999;
+  }
+  .idea {
+    border-color: #777;
+  }
 }
