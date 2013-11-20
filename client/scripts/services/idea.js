@@ -10,7 +10,7 @@ angular.module('govote')
         status: null,
         votes: 0,
         props: { votes: {} },
-        createdAt: new Date().getTime(),
+        timestamp: new Date().getTime(),
         collection: key,
         key: (!attributes.id ? null : key.key(attributes.id))
       });

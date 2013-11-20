@@ -6,7 +6,9 @@ angular
   .config(function ($routeProvider, goConnectProvider) {
     'use strict';
 
-    goConnectProvider.set('https://goinstant.net/mattcreager/DingDong');
+    goConnectProvider.set(
+      'https://goinstant.net/petercyr/servicecloud_goinstant_demo'
+    );
 
     $routeProvider
       .when('/', {

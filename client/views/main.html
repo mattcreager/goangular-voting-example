@@ -1,4 +1,3 @@
-
   <div id="brainstorm">
     <div class="row">
       <div class="app-wrapper col-md-8 col-md-offset-2">
@@ -7,11 +6,11 @@
           <input type="text" value="What should we eat for lunch today?">
           <form class="add-idea clearfix" role="form" ng-submit="addIdea()">
             <div class="form-group idea-title">
-              <input type="text" class="form-control" id="idea-title" placeholder="Your Response" ng-model="ideaTitle">
+              <input type="text" class="form-control " id="idea-title" placeholder="Your Response" ng-model="ideaTitle">
             </div>
             <div class="form-group idea-message">
-              <textarea class="form-control" id="idea-message" rows="2" placeholder="Details" ng-model="ideaDesc"></textarea>
-              <button type="submit" class="btn btn-sm btn-primary pull-right"><i class="glyphicon glyphicon-plus"></i> Add Idea</button>
+              <textarea class="form-control" id="idea-message" rows="2" ng-hide="!ideaTitle" placeholder="Details" ng-model="ideaDesc"></textarea>
+              <button type="submit" class="btn btn-sm btn-primary pull-right" ng-hide="!ideaTitle"><i class="glyphicon glyphicon-plus"></i> Add Idea</button>
             </div>
           </form>
         </header>
@@ -29,7 +28,7 @@
                 <div class="idea-meta">
                   <h4 class="idea-title">{{ idea.get('title') }}</h4>
                   <p>{{ idea.get('desc') }}</p>
-                  <small class="text-muted">10 minutes ago</small>
+                  <small class="text-muted" am-time-ago="idea.timestamp"></small>
                 </div>
               </div>
             </div>
