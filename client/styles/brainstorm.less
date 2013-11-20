@@ -97,8 +97,8 @@
 
 .ideas {
   // Turn on to truncate
-  max-height: 620px;
-  overflow-y: scroll;
+  //max-height: 620px;
+  //overflow-y: scroll;
   padding: 1em;
   background-color: #ddd;
   border: 1px solid #ccc;
@@ -111,13 +111,13 @@
     overflow: hidden;
     border-color: #ccc;
     .idea-title {
-      margin-top: 0;
+      margin-top: .25em;
     }
     .panel-body {
       padding: .75em;
     }
     .voter {
-      padding-left: 1em;
+      padding: 0 1em;
       text-align: center;
     }
     small {
@@ -126,6 +126,7 @@
       margin-top: -.25em;
     }
     footer {
+      display: none;
       padding: .5em .5em .5em 11%;
       background-color: lighten(#ddd, 4%);
       button {
@@ -279,4 +280,62 @@
     height: 20px;
     border-radius: 2px;
   }
+}
+
+
+@media (max-width: 768px) {
+  
+  html {
+    height: 100%;
+  }
+  
+  body {
+    position: relative;
+    height: 100%;
+    padding-top: 135px;
+    overflow: hidden;
+    > .container {
+      width: auto;
+      height: 100%;
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+    #brainstorm {
+      margin-top: 0;
+      height: 100%;
+      > .row {
+        height: 100%;
+      }
+    }
+
+    .app-wrapper {
+      height: 100%;
+      
+      > .idea-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1;
+        padding: 1em;
+        border: 0;
+        box-shadow: 0 1px 6px rgba(34, 34, 34, 0.2);
+      }
+    }
+
+    .ideas {
+      position: relative;
+      height: 100%;
+      overflow-y: auto;
+      padding-top: 1em;
+      border: 0;
+      background-color: #999;
+    }
+
+    .idea {
+      border-color: #777;
+    }
+
 }

@@ -1,7 +1,7 @@
-<div class="row">
-  <div id="brainstorm" class="col-md-8">
+
+  <div id="brainstorm">
     <div class="row">
-      <div class="app-wrapper col-md-8">
+      <div class="app-wrapper col-md-8 col-md-offset-2">
         <header class="idea-header" ng-controller="IdeaSubmissionCtrl">
           <p>Nick asked ten minutes ago:</p>
           <input type="text" value="What should we eat for lunch today?">
@@ -9,28 +9,28 @@
             <div class="form-group idea-title">
               <input type="text" class="form-control" id="idea-title" placeholder="Your Response" ng-model="ideaTitle">
             </div>
-            <div class="form-group idea-message" ng-hide="!ideaTitle">
+            <div class="form-group idea-message">
               <textarea class="form-control" id="idea-message" rows="2" placeholder="Details" ng-model="ideaDesc"></textarea>
               <button type="submit" class="btn btn-sm btn-primary pull-right"><i class="glyphicon glyphicon-plus"></i> Add Idea</button>
             </div>
           </form>
         </header>
-        <div class="app-body ideas" ng-controller="IdeaListCtrl">
+        <div id="app-body" class="app-body ideas" ng-controller="IdeaListCtrl">
           <div class="{{ idea.status }} idea panel panel-default" ng-repeat="idea in ideas | orderIdeasBy:'votes'">
             <div class="panel-body">
               <div class="row">
-                <div class="voter pull-left col-sm-4">
+                <div class="voter pull-left">
                   <div class="btn-group-vertical">
                     <button type="button" class="btn btn-default btn-xs upvote" ng-click="idea.upVote()"><span class="glyphicon glyphicon-chevron-up"></span></button>
                     <button type="button" class="btn btn-default btn-xs downvote" ng-click="idea.downVote()"><span class="glyphicon glyphicon-chevron-down"></span></button>
                   </div>
                   <h5>{{ idea.votes }}</h5>
                 </div>
-                <div class="col-sm-8">
-                  <h4 class="idea-title">{{ idea.get('titl de') }}</h4>
+                <div class="idea-meta">
+                  <h4 class="idea-title">{{ idea.get('title') }}</h4>
                   <p>{{ idea.get('desc') }}</p>
                   <small class="text-muted">10 minutes ago</small>
-                </div> d
+                </div>
               </div>
             </div>
             <footer class="clearfix">
@@ -63,14 +63,6 @@
           </div>
         </div>
       </div>
-      <div class="col-md-4 user-presence">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h5 class="panel-title"><span class="glyphicon glyphicon-user"></span> Viewing this topic</h5>
-          </div>
-          <div class="panel-body" id="user-list"></div>
-        </div>
-      </div>
     </div>
   </div>
-</div></div></div>
+</div></div>
