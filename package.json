@@ -1,11 +1,14 @@
 {
   "name": "goangular-voting-example",
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "harp": "0.8.x",
+    "bower": "~1.2.7"
+  },
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-copy": "~0.4.1",
-  "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-concat": "~0.3.0",
     "grunt-contrib-uglify": "~0.2.0",
     "grunt-contrib-jshint": "~0.6.0",
     "grunt-contrib-cssmin": "~0.6.0",
@@ -31,6 +34,6 @@
     "node": ">=0.8.0"
   },
   "scripts": {
-    "test": "grunt test"
+    "postinstall": "./node_modules/bower/bin/bower install"
   }
 }
