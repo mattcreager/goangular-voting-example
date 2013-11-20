@@ -1,6 +1,6 @@
 {
   "name": "goangular-voting-example",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "dependencies": {
     "harp": "0.8.x",
     "bower": "~1.2.7"
