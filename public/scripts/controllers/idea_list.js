@@ -16,9 +16,3 @@ angular.module('govote')
     });
 
   });
-
-    // $scope.brainstormName = 'Whats your favorite social network!?';
-    // $scope.ideaTitle = '';
-    // $scope.ideaDesc = '';
-    // $scope.ideas = [];
-    // $scope.user = {};

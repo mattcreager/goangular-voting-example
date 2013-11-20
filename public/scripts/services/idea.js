@@ -9,8 +9,10 @@ angular.module('govote')
       _.extend(this, {
         status: null,
         votes: 0,
-        props: { votes: {} },
-        timestamp: new Date().getTime(),
+        props: {
+          votes: {},
+          timestamp: new Date().getTime(),
+        },
         collection: key,
         key: (!attributes.id ? null : key.key(attributes.id))
       });
@@ -172,23 +174,3 @@ angular.module('govote')
 
     return Idea;
   });
-
-  // var create = ideas.create({
-  //           title: $scope.ideaTitle,
-  //           desc: $scope.ideaDesc,
-  //           votes: {
-  //             up: 0,
-  //             down: 0,
-  //           },
-  //           votesBy: {},
-  //           createdBy: user.displayName,
-  //           createdAvatar: user.avatarUrl,
-  //           createdAt: new Date()
-  //         });
-
-// ideas
-//   idea_ids:
-//     title
-//     description
-//     votes:
-//       user_id: 1, 0, -1

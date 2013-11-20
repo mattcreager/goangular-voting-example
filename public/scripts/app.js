@@ -2,7 +2,7 @@
 
 angular
   .module('govote', ['ngRoute', 'angularMoment', 'goinstant', 'angular-md5'])
-  .constant('namespace', 'd')
+  .constant('namespace', 'e')
   .config(function ($routeProvider, goConnectProvider) {
     'use strict';
 
