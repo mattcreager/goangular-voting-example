@@ -100,6 +100,9 @@
   padding: 0 1em;
   text-align: center;
 }
+.idea .idea-meta {
+  width: 75%;
+}
 .idea small {
   display: block;
   margin-top: -0.25em;
