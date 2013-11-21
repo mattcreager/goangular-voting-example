@@ -9,6 +9,7 @@
     "angular-route": "~1.2.0",
     "angular-moment": "~0.5.1",
     "angular-md5": "~0.0.3",
-    "node-uuid": "~1.4.1"
+    "node-uuid": "~1.4.1",
+    "bouncefix.js": "~0.2.0"
   }
 }

@@ -224,9 +224,11 @@
   margin-top: 1em;
   .idea-title {
     margin-bottom: 0;
+    input {
+      border-radius: 3px 3px 0 0;
+    }
   }
   .idea-message {
-    display: none;
     margin-bottom: .5em;
     textarea {
       margin-bottom: .5em;
@@ -246,6 +248,10 @@
       display: block;
     }
   }
+}
+
+#cancel-idea {
+  display: none;
 }
 
 /* 
@@ -292,13 +298,16 @@
   body {
     position: relative;
     height: 100%;
-    padding-top: 135px;
+    padding-top: 140px;
     overflow: hidden;
     > .container {
       width: auto;
       height: 100%;
       padding-left: 0;
       padding-right: 0;
+    }
+    &.form-open {
+      padding-top: 236px;
     }
   }
 
@@ -329,6 +338,7 @@
       position: relative;
       height: 100%;
       overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
       padding-top: 1em;
       border: 0;
       background-color: #999;
@@ -336,6 +346,10 @@
 
     .idea {
       border-color: #777;
+    }
+
+    #cancel-idea {
+      display: block;
     }
 
 }

@@ -8,8 +8,9 @@
             <div class="form-group idea-title">
               <input type="text" class="form-control " id="idea-title" placeholder="Your Response" ng-model="ideaTitle">
             </div>
-            <div class="form-group idea-message">
+            <div class="form-group idea-message clearfix">
               <textarea class="form-control" id="idea-message" rows="2" ng-hide="!ideaTitle" placeholder="Details" ng-model="ideaDesc"></textarea>
+              <a href="#" id="cancel-idea" class="btn btn-link pull-left" ng-hide="!ideaTitle"><small>Cancel</small></a>
               <button type="submit" class="btn btn-sm btn-primary pull-right" ng-hide="!ideaTitle"><i class="glyphicon glyphicon-plus"></i> Add Idea</button>
             </div>
           </form>

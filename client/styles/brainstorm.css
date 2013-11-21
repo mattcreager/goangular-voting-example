@@ -6,7 +6,7 @@
   overflow: hidden;
   margin: 2em auto 5em;
 }
-/*
+/* 
    App Frame
    ========================================================================== */
 .app-wrapper > header {
@@ -56,7 +56,7 @@
   display: inline-block;
   margin-right: -4px;
 }
-/*
+/* 
    Index of Topics
    ========================================================================== */
 .topic-list {
@@ -76,7 +76,7 @@
   top: -2px;
   margin-left: .5em;
 }
-/*
+/* 
    Idea List
    ========================================================================== */
 .ideas {
@@ -174,7 +174,7 @@
 .idea-downvoted .voter h5 {
   color: #D32D2D;
 }
-/*
+/* 
    Response Form
    ========================================================================== */
 .add-idea {
@@ -182,6 +182,9 @@
 }
 .add-idea .idea-title {
   margin-bottom: 0;
+}
+.add-idea .idea-title input {
+  border-radius: 3px 3px 0 0;
 }
 .add-idea .idea-message {
   margin-bottom: .5em;
@@ -199,7 +202,10 @@
 .add-idea.active .idea-message {
   display: block;
 }
-/*
+#cancel-idea {
+  display: none;
+}
+/* 
    User List
    ========================================================================== */
 .user-presence {
@@ -239,7 +245,7 @@
   body {
     position: relative;
     height: 100%;
-    padding-top: 135px;
+    padding-top: 140px;
     overflow: hidden;
   }
   body > .container {
@@ -247,6 +253,9 @@
     height: 100%;
     padding-left: 0;
     padding-right: 0;
+  }
+  body.form-open {
+    padding-top: 236px;
   }
   #brainstorm {
     margin-top: 0;
@@ -272,11 +281,15 @@
     position: relative;
     height: 100%;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     padding-top: 1em;
     border: 0;
     background-color: #999;
   }
   .idea {
     border-color: #777;
+  }
+  #cancel-idea {
+    display: block;
   }
 }
