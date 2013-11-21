@@ -9,6 +9,13 @@ angular.module('govote')
         return;
       }
 
-      return _.sortBy(input, ['votes', 'timestamp']).reverse();
+      return _.toArray(input).sort(function(a, b) {
+        var diff = b.votes - a.votes;
+        if (diff !== 0) {
+          return diff;
+        }
+
+        return a.timestamp - b.timestamp;
+      });
     };
   });
