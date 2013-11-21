@@ -17,6 +17,7 @@ angular.module('govote')
         key: (!attributes.id ? null : key.key(attributes.id))
       });
 
+      this.timestamp = ( attributes.timestamp || this.props.timestamp );
       this.set(_.clone(attributes));
       this.calcVotes();
 

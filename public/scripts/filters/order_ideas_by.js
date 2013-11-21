@@ -9,6 +9,6 @@ angular.module('govote')
         return;
       }
 
-      return _.sortBy(input, attribute).reverse();
+      return _.sortBy(input, ['votes', 'timestamp']).reverse();
     };
   });
