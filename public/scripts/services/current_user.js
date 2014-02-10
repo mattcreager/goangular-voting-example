@@ -1,18 +1,21 @@
 /* global angular */
 
 angular.module('govote')
-  .factory('currentUser', function(goUsers, safeApply, $rootScope, $q) {
+  .factory('currentUser', function($goConnection, $goKey, $rootScope, $q) {
     'use strict';
 
     var deferred = $q.defer();
 
-    goUsers.room('lobby').initialize().then(function(goUsers) {
-      var currentUser = goUsers.getSelf();
+    $goConnection.$ready().then(function(connection) {
+      var room = connection.room('lobby');
+      var currentUser = $goKey(room.self().name).$sync();
 
-      safeApply($rootScope, function() {
+      currentUser.$on('ready', function() {
         deferred.resolve(currentUser);
-      });
-    }, deferred.reject);
+
+      }, deferred.reject);
+
+    });
 
     return deferred.promise;
   });

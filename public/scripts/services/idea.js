@@ -1,122 +1,79 @@
 /* global angular, _ */
 
 angular.module('govote')
-  .factory('Idea', function(safeApply, $rootScope, $q, currentUser) {
+  .factory('Idea', function($rootScope, $q, currentUser) {
     'use strict';
 
-    function Idea(key, attributes) {
+    function Idea(model, id) {
       _.bindAll(this);
-      _.extend(this, {
-        status: null,
-        votes: 0,
-        props: {
-          votes: {},
-          timestamp: new Date().getTime(),
-        },
-        collection: key,
-        key: (!attributes.id ? null : key.key(attributes.id))
+      this.id = id;
+      this.status = null;
+      this.model = model;
+      this.localId = null;
+
+      var self = this;
+
+      model.$sync();
+      currentUser.then(function(user) {
+        self.localId = user.id;
+
+        model.$on('ready', function() {
+          self.watchVoters();
+          self.calcVotes();
+
+          self.setStatus();
+        });
       });
-
-      this.timestamp = ( attributes.timestamp || this.props.timestamp );
-      this.set(_.clone(attributes));
-      this.calcVotes();
-
-      if (this.key) {
-        this.watchVotes();
-      }
     }
 
-    Idea.prototype.watchVotes = function() {
+    Idea.prototype.watchVoters = function() {
       var self = this;
 
-      self.key.key('votes').on('set', {
+      var opts = {
+        local: true,
         bubble: true,
-        listener: function(vote, context) {
-          var voterId = _.last(context.key.split('/'));
+        listener: function(val, context) {
+          self.model.voters = self.model.voters || {};
+          self.model.voters[context.userId] = val;
 
-          self.props.votes[voterId] = vote;
           self.calcVotes();
         }
-      });
+      };
+
+      this.model.$key('voters').$on('set', opts);
     };
 
-    Idea.prototype.set = function(attribute, value) {
-      var self = this;
-
-      if (_.isObject(attribute)) {
-        _.each(attribute, function(value, attribute) {
-          self.set(attribute, value);
-        });
+    Idea.prototype.setStatus = function(vote) {
+      if (_.isUndefined(vote)) {
+        if (this.model.voters) {
+          vote = this.model.voters[this.localId];
+        }
       }
 
-      this.props[attribute] = value;
-    };
-
-    Idea.prototype.getAttributes = function() {
-      return _.clone(this.props);
-    };
-
-    Idea.prototype.save = function() {
       var self = this;
-      var deferred = $q.defer();
 
-      self.collection.add(self.getAttributes(), function(err, value, context) {
-        if (err) {
-          return safeApply($rootScope, function() {
-            deferred.reject(err);
-          });
-        }
-
-        self.id = _.last(context.addedKey.split('/'));
-        self.props.id = self.id;
-        self.key = self.collection.key(self.id);
-        self.watchVotes();
-
-        safeApply($rootScope, function() {
-          deferred.resolve(self);
-        });
-      });
-
-      return deferred.promise;
-    };
-
-    Idea.prototype.get = function(attribute) {
-      return _.clone(this.props[attribute]);
+      switch(vote) {
+        case 1:
+          self.status = 'idea-upvoted';
+          break;
+        case -1:
+          self.status = 'idea-downvoted';
+          break;
+        default:
+          self.status = null;
+      }
     };
 
     Idea.prototype.calcVotes = function() {
-      var self = this;
-
-      var votes = _.reduce(self.props.votes, function(result, vote) {
+      var votes = _.reduce(this.model.voters, function(result, vote) {
           return result + vote;
       }, 0);
 
-      safeApply($rootScope, function() {
-        self.votes = parseFloat(votes);
-      });
+      this.model.$key('votes').$set(parseFloat(votes));
 
-      currentUser.then(function(user) {
-        var userId = user.get('id');
-        var status;
-
-        self.props.votes[userId] = self.props.votes[userId] || 0;
-
-        if (self.props.votes[userId] === 0) {
-          status = null;
-        }
-
-        if (self.props.votes[userId] === 1) {
-          status = 'idea-upvoted';
-        }
-
-        if (self.props.votes[userId] === -1) {
-          status = 'idea-downvoted';
-        }
-
-        safeApply($rootScope, function() {
-          self.status = status;
-        });
-      });
+      if (!this.model.voters) {
+        return;
+      }
     };
 
     Idea.prototype.upVote = function() {
@@ -124,22 +81,20 @@ angular.module('govote')
       var deferred = $q.defer();
 
       currentUser.then(function(user) {
-        var userId = user.get('id');
+        var userId = user.id;
         var vote = 1;
 
-        if (self.props.votes[userId] && self.props.votes[userId]=== vote) {
-          vote = 0;
+        if (self.model.voters &&
+            self.model.voters[userId] &&
+            self.model.voters[userId] === vote) {
+              vote = 0;
         }
 
-        self.key.key('votes/' + userId).set(vote, function(err) {
-          if (err) {
-            safeApply($rootScope, function() {
-              deferred.reject(err);
-            });
-          }
+        self.model.$key('voters').$key(userId).$set(vote).then(function() {
+          self.setStatus(vote);
 
-          self.props.votes[userId] = vote;
-          self.calcVotes();
+        }).catch(function(err) {
+          deferred.reject(err);
         });
       });
 
@@ -151,22 +106,20 @@ angular.module('govote')
       var deferred = $q.defer();
 
       currentUser.then(function(user) {
-        var userId = user.get('id');
+        var userId = user.id;
         var vote = -1;
 
-        if (self.props.votes[userId] && self.props.votes[userId] === vote) {
-          vote = 0;
+        if (self.model.voters &&
+            self.model.voters[userId] &&
+            self.model.voters[userId] === vote) {
+              vote = 0;
         }
 
-        self.key.key('votes/' + userId).set(vote, function(err) {
-          if (err) {
-            safeApply($rootScope, function() {
-              deferred.reject(err);
-            });
-          }
+        self.model.$key('voters').$key(userId).$set(vote).then(function() {
+          self.setStatus(vote);
 
-          self.props.votes[userId] = vote;
-          self.calcVotes();
+        }).catch(function(err) {
+          deferred.reject(err);
         });
       });
 

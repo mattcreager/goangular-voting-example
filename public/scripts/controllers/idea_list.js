@@ -3,16 +3,11 @@
 'use strict';
 
 angular.module('govote')
-  .controller('IdeaListCtrl', function(ideas, $scope, safeApply, namespace) {
+  .controller('IdeaListCtrl', function(ideas, $scope, namespace) {
 
+    var instance = null;
     ideas.namespace(namespace).then(function(ideas) {
-      $scope.ideas = ideas.getAll();
+      instance = ideas;
+      $scope.ideas = ideas.getIdeas();
     });
-
-    $scope.$on('ideas:add', function(context, ideas) {
-      safeApply($scope, function() {
-        $scope.ideas = ideas;
-      });
-    });
-
   });
