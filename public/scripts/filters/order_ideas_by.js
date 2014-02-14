@@ -10,12 +10,12 @@ angular.module('govote')
       }
 
       return _.toArray(input).sort(function(a, b) {
-        var diff = b.votes - a.votes;
+        var diff = b.model[attribute] - a.model[attribute];
         if (diff !== 0) {
           return diff;
         }
 
-        return a.timestamp - b.timestamp;
+        return a.model.timestamp - b.model.timestamp;
       });
     };
   });

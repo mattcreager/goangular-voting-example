@@ -5,7 +5,7 @@
     "angular": "~1.2.0",
     "bootstrap": "~3.0.2",
     "lodash": "~2.3.0",
-    "goangular": "4c3b365d17f46726d3306a046bea4d73fe37f704",
+    "goangular": "3.1.*",
     "angular-route": "~1.2.0",
     "angular-moment": "~0.5.1",
     "angular-md5": "~0.0.3",

@@ -1,14 +1,12 @@
 /* global angular */
 
 angular
-  .module('govote', ['ngRoute', 'angularMoment', 'goinstant', 'angular-md5'])
-  .constant('namespace', 'e')
-  .config(function ($routeProvider, goConnectProvider) {
+  .module('govote', ['ngRoute', 'angularMoment', 'goangular', 'angular-md5'])
+  .constant('namespace', 'v2')
+  .config(function ($routeProvider, $goConnectionProvider) {
     'use strict';
 
-    goConnectProvider.set(
-      'https://goinstant.net/petercyr/servicecloud_goinstant_demo'
-    );
+    $goConnectionProvider.$set('https://goinstant.net/cmac/goangular');
 
     $routeProvider
       .when('/', {

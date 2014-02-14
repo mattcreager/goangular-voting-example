@@ -16,7 +16,7 @@
           </form>
         </header>
         <div id="app-body" class="app-body ideas" ng-controller="IdeaListCtrl">
-          <div class="{{ idea.status }} idea panel panel-default" ng-repeat="idea in ideas | orderIdeasBy:'votes'">
+          <div class="{{ idea.status }} idea panel panel-default" ng-repeat="(id, idea) in ideas | orderIdeasBy:'votes'">
             <div class="panel-body">
               <div class="row">
                 <div class="voter pull-left">
@@ -24,12 +24,12 @@
                     <button type="button" class="btn btn-default btn-xs upvote" ng-click="idea.upVote()"><span class="glyphicon glyphicon-chevron-up"></span></button>
                     <button type="button" class="btn btn-default btn-xs downvote" ng-click="idea.downVote()"><span class="glyphicon glyphicon-chevron-down"></span></button>
                   </div>
-                  <h5>{{ idea.votes }}</h5>
+                  <h5>{{ idea.model.votes }}</h5>
                 </div>
                 <div class="idea-meta pull-left">
-                  <h4 class="idea-title">{{ idea.get('title') }}</h4>
-                  <p>{{ idea.get('desc') }}</p>
-                  <small class="text-muted" am-time-ago="idea.props.timestamp"></small>
+                  <h4 class="idea-title">{{ idea.model.title }}</h4>
+                  <p>{{ idea.model.desc }}</p>
+                  <small class="text-muted" am-time-ago="idea.timestamp"></small>
                 </div>
               </div>
             </div>
